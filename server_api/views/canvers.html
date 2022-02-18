@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:0 auto;
+            padding: 0 auto;
+            height: 500px;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            margin: 50px;
+            padding: 10px;
+        }
+
+        #Oval {
+            stroke-dasharray: 1300 1300 0 0;
+            animation: round 1s ease-in infinite both ;
+        }
+        #New-shape{ 
+            stroke-dasharray: 0 0 450 450;
+            animation: d 1s ease-in 1s infinite forwards;
+            opacity: 0;
+        }   
+        @keyframes d {
+            0% {
+                stroke-dasharray: 0 0 0 450;
+                opacity: 1;
+                animation: 名字 持续时间s 动画方式 延迟时间 播放次数 是否反向流动 播放完成干什么
+            }
+
+            50% {
+                stroke-dasharray: 0 0 0 450;
+                opacity: 1;
+            }
+            100%{
+                stroke-dasharray: 0 0 450 450;
+                opacity: 1;
+            }
+           
+        }
+
+        @keyframes round {
+            0% {
+                stroke-dasharray: 0 1300 0 0;
+                
+            }
+
+            50% {
+                stroke-dasharray: 1300 1300 0 0;
+            }
+            100%{
+                stroke-dasharray: 1300 1300 0 0;
+                animation-delay: 1s;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <svg width="100%" height="100%" viewBox="-20 -30 450 450" version="1.1"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M0 204C0 91.3339 91.3339 0 204 0C316.666 0 408 91.3339 408 204C408 316.666 316.666 408 204 408C91.3339 408 0 316.666 0 204Z"
+                id="Oval" fill="none" stroke="#4EC141" stroke-width="27" stroke-linecap="round"
+                stroke-linejoin="round" />
+            <path transform='translate(45 139)' d="M0 69.5 L97.5 175 L303 0" id="New-shape" fill="none" stroke="#4EC141" stroke-width="27"
+                stroke-linecap="round" stroke-linejoin="round"  />
+
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="222" height="228" viewBox="0 0 222 228">
+                    <defs>
+                      <clipPath id="clip-path">
+                        <rect x="11" width="222" height="228" fill="none"/>
+                      </clipPath>
+                    </defs>
+                    <g id="滚动组_1" data-name="滚动组 1" transform="translate(-11)" clip-path="url(#clip-path)" style="isolation: isolate">
+                      <g id="椭圆_1" data-name="椭圆 1" fill="#fff" stroke="#707070" stroke-width="1">
+                        <circle cx="114" cy="114" r="114" stroke="none"/>
+                        <circle cx="114" cy="114" r="113.5" fill="none"/>
+                      </g>
+                    </g>
+                  </svg>
+                  
+        </svg>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组代理
+        let arr = ['1','2','3'];
+         arr = new Proxy(arr,{
+            get(当前对象,属性名){
+                console.log('获取',当前对象,属性名);
+                return 当前对象[属性名]
+            },
+            set(当前对象,属性名,新值){
+                console.log('修改',当前对象,属性名);
+                当前对象[属性名]=新值
+                return true  //必须返回  true  标识修改成功
+            }
+        })
+
+        //对象代理
+        let obj = {
+            sname:'赵旭',
+            age:1,
+            log(){
+                console.log(this.sname,this.age);
+            }
+        };
+         obj = new Proxy(obj,{
+            get(当前对象,属性名){
+                console.log('获取',当前对象,属性名);
+                return 当前对象[属性名]
+            },
+            set(当前对象,属性名,新值){
+                console.log('修改',当前对象,属性名);
+                当前对象[属性名]=新值
+                return true  //必须返回  true  标识修改成功
+            }
+        })
+        console.log(obj.sname);
+    </script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            color: rgb(255, 245, 245)
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 点击之后 状态为1
+        // {
+        //     0:'可购买',
+        //     1:'可购买',
+        //     2:'可购买',
+        // }
+
+        let obj = {
+            "r_id": 1,
+            "r_name": "2号测试影厅",
+            "r_rows": 5,
+            "r_cols": 5,
+            "screen_location": [{
+                    "x": 1,
+                    "y": 2
+                },
+                {
+                    "x": 1,
+                    "y": 4
+                }
+            ],
+            "seat_state": [
+                [{
+                        "x": 1,
+                        "y": 1,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 1,
+                        "y": 2,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 1,
+                        "y": 3,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 1,
+                        "y": 4,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 1,
+                        "y": 5,
+                        "state": 0,
+                        "isNull": 1
+                    }
+                ],
+                [{
+                        "x": 2,
+                        "y": 1,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 2,
+                        "y": 2,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 2,
+                        "y": 3,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 2,
+                        "y": 4,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 2,
+                        "y": 5,
+                        "state": 0,
+                        "isNull": 0
+                    }
+                ],
+                [{
+                        "x": 3,
+                        "y": 1,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 3,
+                        "y": 2,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 3,
+                        "y": 3,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 3,
+                        "y": 4,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 3,
+                        "y": 5,
+                        "state": 0,
+                        "isNull": 0
+                    }
+                ],
+                [{
+                        "x": 4,
+                        "y": 1,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 4,
+                        "y": 2,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 4,
+                        "y": 3,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 4,
+                        "y": 4,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 4,
+                        "y": 5,
+                        "state": 0,
+                        "isNull": 0
+                    }
+                ],
+                [{
+                        "x": 5,
+                        "y": 1,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 5,
+                        "y": 2,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 5,
+                        "y": 3,
+                        "state": 0,
+                        "isNull": 1
+                    },
+                    {
+                        "x": 5,
+                        "y": 4,
+                        "state": 0,
+                        "isNull": 0
+                    },
+                    {
+                        "x": 5,
+                        "y": 5,
+                        "state": 0,
+                        "isNull": 0
+                    }
+                ]
+            ]
+        }
+
+        // 3,2
+        function changeSeatState(x, y, state) {
+
+            let seat = obj.seat_state
+            for (let i = 0; i < seat.length; i++) {
+                for (let j = 0; j < seat[i].length; j++) {
+                    // console.log(seat[i][j].x + '排' + seat[i][j].y + '座');
+                    if (seat[i][j].x == 3 && seat[i][j].y == 2) {
+                        seat[i][j].state = 2
+                        break;
+                    }
+                }
+            }
+        }
+        // console.log(seat);
+
+                    //电影时长  日期   开始时间  间隔时间
+        function time(tlength, date, start) {
+       
+            // let d = delay*60*1000
+            let th = tlength*60*1000 
+            //电影时间毫秒值
+            // 当前年-月-日 
+            let tdate = (new Date(date+" "+start).getTime())
+            let tdate2 = (new Date(date+" "+start).getTime()+th)
+            // 用来存储时
+            let timearr = []
+            for (let i = 0; i < 1; i++) {
+                if(new Date(tdate+(th*i)).getDay() > new Date(tdate).getDay()){
+                    break;
+                }
+                timearr.push({start:new Date(tdate+(th*i)),stop:new Date(tdate2+(th*i))})
+            }
+            return timearr
+        }
+        time(96, '2020-01-01', '08:30')
+
+
+        
+    </script>
+</body>
+
+</html>

@@ -1,3 +1,0 @@
-[submodule "client/movie_client"]
-	path = client/movie_client
-	url = https://github.com/zhaoxu1985/onlineBuyMovieTicket.git

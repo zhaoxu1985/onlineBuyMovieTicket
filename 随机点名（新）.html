@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 页面css样式 */
+        .wrapper {
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .box li {
+            vertical-align: top;
+            display: inline-block;
+            width: 120px;
+            height: 70px;
+            border: 2px solid #ddd;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 50px;
+            margin: 5px;
+            font-size: 27px;
+            line-height: 70px;
+        }
+
+        .wrapper button {
+            border: none;
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            cursor: pointer;
+            outline: none;
+            margin-top: 20px;
+            font-weight: bolder;
+            color: #333;
+            background-color: rgb(14, 146, 43);
+        }
+
+        .wrapper button {
+            display: inline-block;
+        }
+
+        body {
+            background-color: #eee;
+        }
+
+        .bottom{
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        .start,.stop{
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="box"></ul>
+        <button class="start">start</button>
+        <button class="stop">stop</button>
+        <!-- 速度 -->
+        <div class="bottom">
+           速度：<input value="30" id="rodRange" type="range" min="30" max="300">   当前速度: <span class="currentSpeed">30</span>
+        </div>
+    </div>
+
+    <script>
+        var boxUl = document.getElementsByClassName('box')[0];
+        var start = document.getElementsByClassName('start')[0];
+        var stop = document.getElementsByClassName('stop')[0]
+        var oLi = document.getElementsByTagName('li');
+        var rodRange = document.getElementById('rodRange');
+        var currentSpeed = document.getElementsByClassName('currentSpeed')[0]
+        var count = 0;
+
+        let nameArr = ["庞彤", "王冲,", "何晓玲", "张婉晴", "王哲 ", "高雪彤", "郭孟杰", "黄旭 ", "张春艾", "庄佳佳", "崔 阳 ", "罗敏 ", "白瑞 ", "宁园园",
+            "王子豪", "王玉 ", "吕振 ", "刘杰 ", "马永飞", "李意斌", "毛焓鳕", "朱文娟", "刘天驰", "闫婷婷", "李洧皓", "席莉 ", "王媛媛", "赵世琦", "刘亚 ",
+            "张旺 ", "谢士奇", "田思致"
+        ]
+
+
+
+        var str = "";
+        for (let i = 0; i < nameArr.length; i++) {
+            str += "<li >" + nameArr[i] + "</li>"
+        }
+        boxUl.innerHTML = str;
+        let countJ = 0
+        var timer = null;
+        start.onclick = function () {
+            count++
+            if (count > 1) return alert('别点了,别点了,够快了')
+            timer = setInterval(function () {
+                var i = Math.floor(Math.random() * nameArr.length);
+                countJ = i
+                for (var j = 0; j < oLi.length; j++) {
+                    oLi[j].removeAttribute("style");
+                }
+                oLi[i].style.background = "red";
+            }, rodRange.value);
+        };
+        stop.onclick = function () {
+            clearInterval(timer);
+            count = 0
+        }
+
+        //速度调整
+        rodRange.addEventListener('change',(e)=>{
+            console.log(e.target.value);
+            currentSpeed.innerHTML = e.target.value
+        })
+    </script>
+</body>
+
+</html>
